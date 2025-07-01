@@ -1,0 +1,38 @@
+/* Countr.css */
+
+/* === row container for each +N/−N pair === */
+.counter {
+    display: flex;
+    justify-content: center;  /* center the two buttons */
+    align-items: center;
+    gap: 12px;                /* horizontal space between + and − */
+    margin-bottom: 0px;       /* vertical space between rows */
+  }
+  
+  /* === your buttons === */
+  .counterButton {
+    background-color: #00a5ab;
+  }
+  
+  /* === total display === */
+  .totalCount {
+    color: #000000;
+    font-size: 100px;
+    text-align: center;
+    margin-top: 10px;
+  }
+  .reset-button{
+    background-color: #000000fb;
+  }
+  button{
+    font-size: 16px;
+    width: 100px;
+    /* remove the old margin:2px; */
+    margin: -2;
+    color: white;
+    padding: 20px;
+    border-radius: 40px;
+    border: 4px solid black;
+    cursor: pointer;
+  }
+  
