@@ -3,12 +3,12 @@ import LogoutComponent from "./logoutComponent";
 import ListTodos from "./Listtodospage";
 import WelcomePage from "./WelcomePage";
 import LoginPage from "./LoginPage";
+import SignUpPage from "./SignupPage";
 import ErrorPage from './ErrorPage';
 import TodoUpdateComponent from './TodoUpdatePage';
 import TodoAddUpdateComponent from './addTodoComponent';
-import './TodoApp.css';
-import { useAuth } from "./security/Authcontext";
 
+import { useAuth } from "./security/Authcontext";
 
 export default function TodoApp() {
   function AuthenticatedRoute({children}) {
@@ -19,7 +19,9 @@ export default function TodoApp() {
   }
   return (
     <Routes>
-      <Route path='/' element={<LoginPage  />} />
+      <Route path="/" element={<Navigate to="/login" />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/signup" element={<SignUpPage/>}></Route>
       
       <Route path='/welcome/:username' element={
         <AuthenticatedRoute>

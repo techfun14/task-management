@@ -1,6 +1,5 @@
-import { useState ,useEffect} from "react";
+import { useState ,useEffect, useCallback} from "react";
 import { deleteTodoForId, retrieveAllTodosForUsername } from "./api/TodoApiService";
-import { error } from "ajv/dist/vocabularies/applicator/dependencies";
 import { useAuth } from "./security/Authcontext";
 import './ListTodospage.css';
 import { useNavigate } from "react-router-dom";
@@ -8,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 function ListTodos(){
     const navigate=useNavigate();
     const today= new Date();
-    const targetDate= new Date(today.getFullYear()+12,today.getMonth(),today.getDate());
     const[todos,setTodos]= useState([]);
     const[message,setMessage]=useState(null);
     const authContext =useAuth();
@@ -19,18 +17,15 @@ function ListTodos(){
     //     // {id:2,description:'learn fullstack java',isDone:false,targetDate:targetDate},
     //     // {id:3,description:'learn React',isDone:false,targetDate:targetDate}
     // ]
-
-    function refreshTodos(){
-         retrieveAllTodosForUsername(username).then(
+    const refreshTodos =useCallback(()=>retrieveAllTodosForUsername(username,authContext.token).then(
             response => {console.log(response)
             setTodos(response.data)
             }
         ) 
-        .catch(error=>console.log(error))
-    }  
+        .catch(error=>console.log(error)),[username, authContext.token]) 
     useEffect(() => {
         refreshTodos(); 
-    }, [] );
+    }, [refreshTodos]);
 
 
     function deleteTodo(id,description){
@@ -40,7 +35,7 @@ function ListTodos(){
                 refreshTodos()
             }
         
-        ).catch(error)
+        ).catch(error=>console.log(error))
     }
 
     return (

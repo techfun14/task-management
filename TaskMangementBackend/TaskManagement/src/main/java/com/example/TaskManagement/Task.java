@@ -9,38 +9,48 @@ import java.time.LocalDate;
 
 @Entity
 public class Task {
-    public Task(int id, String username, String description, LocalDate targetDate, boolean done) {
+
+    protected Task() {
+        // JPA needs a default constructor
+    }
+
+    public Task(Integer id, String username, String description, LocalDate targetDate, boolean done) {
         super();
         this.id = id;
-        this.username = username;
+        this.userName = username;
         this.description = description;
         this.targetDate = targetDate;
         this.done = done;
     }
+
     @Id
     @GeneratedValue
-    private int id;
-    private String username;
+    private Integer id;
 
-    @Size(min=3,message = "Enter atleast 10 chatacter")
+    private String userName;
+
+
+    @Size(min = 3, message = "Enter at least 10 characters")
     private String description;
+
     private LocalDate targetDate;
+
     private boolean done;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
     public String getUsername() {
-        return username;
+        return userName;
     }
 
     public void setUsername(String username) {
-        this.username = username;
+        this.userName = username;
     }
 
     public String getDescription() {
@@ -69,7 +79,7 @@ public class Task {
 
     @Override
     public String toString() {
-        return "Todo [id=" + id + ", username=" + username + ", description=" + description + ", targetDate="
-                + targetDate + ", done=" + done + "]";
+        return "Task [id=" + id + ", username=" + userName + ", description=" + description +
+                ", targetDate=" + targetDate + ", done=" + done + "]";
     }
 }

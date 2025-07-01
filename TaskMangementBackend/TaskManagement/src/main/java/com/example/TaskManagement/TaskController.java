@@ -5,12 +5,16 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+//@RestController
 public class TaskController {
    private TaskService taskService;
 
    public TaskController(TaskService taskService) {
       this.taskService = taskService;
+   }
+   @GetMapping(path = "/basicauth")
+   public String basicAuth(){
+      return "Success";
    }
 
    @GetMapping("/users/{username}/todos")
