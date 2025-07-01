@@ -1,0 +1,115 @@
+<header className="header">
+      <div className="nav-left">
+        <h1 className="logo">Task Manager</h1>
+      </div>
+      <nav className="navbar">
+        {isAuthenticated && 
+          (<>
+            <button onClick={() => navigate(`/welcome/${usrname}`)} className="nav-link">Home</button>
+            <button onClick={() => navigate("/list-todos")} className="nav-link">Todos</button>
+          </>)
+        }
+      </nav>
+      <div className="user-controls">
+        {isAuthenticated ? (
+          <button
+            className="logout-btn"
+            onClick={() => {
+              navigate('/logout');
+              authContext.logout() // You should have this in your context!
+              
+            }}
+          >
+            Logout
+          </button>
+        ) : (
+          <button className="login-btn" onClick={() => navigate("/")}>
+            Login
+          </button>
+        )}
+      </div>
+    </header>
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: linear-gradient(to right, #3f87a6, #ebf8e1, #f69d3c);
+    color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: auto;
+  }
+  
+  .nav-left {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo {
+    font-size: 1.8rem;
+    margin-left: 15px;
+    font-weight: bold;
+    color: #2b2b2b;
+  }
+  
+  .back-btn {
+    background: transparent;
+    color: #2b2b2b;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 6px;
+    transition: background 0.3s;
+  }
+  
+  .back-btn:hover {
+    background: rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar {
+    display: flex;
+    gap: 15px;
+    color: #2b2b2b;
+  }
+  
+  .nav-link {
+    text-decoration: none;
+    color: #2b2b2b;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+  
+  .nav-link:hover {
+    color: #f69d3c;
+  }
+  
+  .user-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .user-photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit:cover; 
+    border: 2px solid #333;
+  }
+  
+   .logout-btn {
+    padding: 12px;
+    background-color:rgb(5, 29, 132);
+    color: #ffffff;
+    border-radius: 6px;
+    border: 2px solid #2b2b2b;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.3s;
+  }
+  
+  .login-btn:hover, .logout-btn:hover {
+    background:#3f87a6;
+  }
+  

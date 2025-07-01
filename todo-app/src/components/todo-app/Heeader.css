@@ -1,0 +1,102 @@
+/* Heeader.css */
+
+/* Header container */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: linear-gradient(to right, #3f87a6, #ebf8e1, #f69d3c);
+  color: #2b2b2b;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Logo section */
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0;
+  color: #1f2937;
+}
+
+/* Navigation center */
+.nav-center {
+  display: flex;
+  gap: 1.2rem;
+}
+
+/* Buttons inside nav center */
+.nav-btn {
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #2b2b2b;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.nav-btn:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  color: #00308F;
+}
+
+/* Auth section */
+.nav-right {
+  display: flex;
+  align-items: center;
+}
+
+.auth-btn {
+  font-size: 0.95rem;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.auth-btn.login {
+  background-color: #00308F;
+  color: #ffffff;
+}
+
+.auth-btn.logout {
+  background-color: #1e3a8a;
+  color: #ffffff;
+}
+
+.auth-btn:hover {
+  background-color: #1f4da2;
+}
+
+/* Responsive layout for mobile screens */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 0.8rem;
+    align-items: flex-start;
+  }
+
+  .nav-center {
+    flex-direction: column;
+    gap: 0.6rem;
+    width: 100%;
+  }
+
+  .nav-btn, .auth-btn {
+    width: 100%;
+    text-align: left;
+  }
+
+  .nav-right {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}

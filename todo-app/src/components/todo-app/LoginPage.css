@@ -1,0 +1,73 @@
+/* Fullscreen center layout with clean white background */
+.Login {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #aaaaaa; /* very light gray */
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Login card */
+.LoginContainer {
+  margin-top: -100px;
+  background-color: #ffffff;
+  padding: 2.5rem 3rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  width: 350px;
+  text-align: center;
+}
+
+/* Heading */
+.LoginContainer h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #1f2937; /* slate gray */
+  margin-bottom: 1.8rem;
+}
+
+/* Input fields */
+.input-field {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 1.2rem;
+  border: 1.5px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.input-field:focus {
+  border-color: #2563eb; /* blue-600 */
+}
+
+/* Login button */
+.login-btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  background-color: #00308F;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+  background-color: #1d4ed8; /* hover blue */
+}
+
+/* Error message */
+.error-msg {
+  background-color: #fef2f2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}

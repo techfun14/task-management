@@ -1,0 +1,18 @@
+# Ignore backend build files
+target/
+*.class
+
+# Ignore frontend dependencies
+node_modules/
+build/
+
+# IDE/editor folders
+.idea/
+.vscode/
+
+# OS/system files
+.DS_Store
+Thumbs.db
+*.log
+.env
+ 
