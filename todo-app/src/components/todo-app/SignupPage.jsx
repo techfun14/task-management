@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from './security/Authcontext';
+import { AddUserApi } from './api/UserApiService';
 import './SignUpPage.css';
 
 export default function SignUpPage() {
@@ -105,8 +106,18 @@ export default function SignUpPage() {
       
       // Here you would typically make an API call to register the user
       // For now, we'll simulate a successful registration
-      console.log('User registration data:', formData);
-      
+      const user = {
+        name: formData.name,
+        username: formData.username,
+        email: formData.email,
+        phone: formData.phone,
+        password: formData.password
+      };
+      console.log('User registration data:', user);
+
+      // Call the API to register the user
+      await AddUserApi(formData.username, user);
+
       // Navigate to login page after successful registration
       navigate('/login');
       

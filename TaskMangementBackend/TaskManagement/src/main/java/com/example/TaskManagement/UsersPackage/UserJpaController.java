@@ -4,7 +4,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/users")
 public class UserJpaController {
     private UserRepository userRepository;
 
@@ -19,6 +19,9 @@ public class UserJpaController {
        }
        if(userRepository.existsByEmailAddress(user.getEmailAddress())){
            return ResponseEntity.badRequest().body("Email Already Exists");
+       }
+       if(userRepository.existsByContactNumber(user.getContactNumber())){
+           return ResponseEntity.badRequest().body("ContactNumber Already Exists:");
        }
        userRepository.save(user);
        return ResponseEntity.ok("User is Created");
