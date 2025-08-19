@@ -29,7 +29,6 @@ public class Task {
 
     private String userName;
 
-
     @Size(min = 3, message = "Enter at least 10 characters")
     private String description;
 

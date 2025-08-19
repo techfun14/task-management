@@ -20,9 +20,9 @@ public class TaskJpaController {
     }
 
     @GetMapping("/users/{username}/tasks")
-    public List<Task> retrieveTasks(@PathVariable String username){
+    public List<Task> retrieveTasks(@PathVariable String userName){
 //        return taskService.findByUsername(username);
-        return  taskRepository.findByUsername(username);
+        return  taskRepository.findByUsername(userName);
     }
     @GetMapping("users/{username}/tasks/{id}")
     public Task retrieveTask (@PathVariable String username,@PathVariable int id){
