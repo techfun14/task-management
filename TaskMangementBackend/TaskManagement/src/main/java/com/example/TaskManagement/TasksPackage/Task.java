@@ -1,4 +1,4 @@
-package com.example.TaskManagement;
+package com.example.TaskManagement.TasksPackage;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

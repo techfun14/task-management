@@ -1,7 +1,6 @@
-package com.example.TaskManagement;
+package com.example.TaskManagement.TasksPackage;
 
 import jakarta.validation.Valid;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
