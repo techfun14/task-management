@@ -22,7 +22,7 @@ public class TaskJpaController {
     @GetMapping("/users/{username}/tasks")
     public List<Task> retrieveTasks(@PathVariable String userName){
 //        return taskService.findByUsername(username);
-        return  taskRepository.findByUsername(userName);
+        return  taskRepository.findByUserName(userName);
     }
     @GetMapping("users/{username}/tasks/{id}")
     public Task retrieveTask (@PathVariable String username,@PathVariable int id){
@@ -36,8 +36,8 @@ public class TaskJpaController {
         return task;
     }
     @PostMapping("users/{username}/tasks")
-    public Task createTask(@PathVariable String username,@RequestBody Task task){
-        task.setUsername(username);
+    public Task createTask(@PathVariable String userName,@RequestBody Task task){
+        task.setUserName(userName);
         task.setId(null);
         return taskRepository.save(task);
 //        taskService.addTodo(username,task.getDescription(),task.getTargetDate(),task.getIsDone());

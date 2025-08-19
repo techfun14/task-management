@@ -24,7 +24,7 @@ public class TaskService {
         todos.add(new Task(todosCount++,"utkarsh","learn CSS1",LocalDate.now().plusYears(2),false));
     }
     public List<Task> findByUsername(String username){
-        Predicate<Task> predicate= todo -> todo.getUsername().equalsIgnoreCase(username);
+        Predicate<Task> predicate= todo -> todo.getUserName().equalsIgnoreCase(username);
         return todos.stream().filter(predicate).toList();
     }
     public void addTodo(String username,String description,LocalDate targetDate,boolean isDone){
