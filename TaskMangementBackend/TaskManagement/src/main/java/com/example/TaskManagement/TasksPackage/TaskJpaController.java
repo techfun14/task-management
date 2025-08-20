@@ -7,8 +7,8 @@ import java.util.List;
 
 @RestController
 public class TaskJpaController {
-    private TaskService taskService;
-    private TaskRepository taskRepository;
+    private final TaskService taskService;
+    private  final TaskRepository taskRepository;
 
     public TaskJpaController(TaskService taskService, TaskRepository todoRepository1) {
         this.taskService = taskService;
@@ -20,23 +20,23 @@ public class TaskJpaController {
     }
 
     @GetMapping("/users/{username}/tasks")
-    public List<Task> retrieveTasks(@PathVariable String userName){
+    public List<Task> retrieveTasks(@PathVariable("username") String userName){
 //        return taskService.findByUsername(username);
         return  taskRepository.findByUserName(userName);
     }
     @GetMapping("users/{username}/tasks/{id}")
-    public Task retrieveTask (@PathVariable String username,@PathVariable int id){
+    public Task retrieveTask (@PathVariable("username") String username,@PathVariable int id){
 //        return taskService.findById(id);
         return taskRepository.findById(id).get();
     }
     @PutMapping("users/{username}/tasks/{id}")
-    public Task updateTask(@PathVariable String username,@PathVariable int id,@RequestBody Task task){
+    public Task updateTask(@PathVariable("username") String username,@PathVariable int id,@RequestBody Task task){
 //        taskService.updateTodo(task);
         taskRepository.save(task);
         return task;
     }
     @PostMapping("users/{username}/tasks")
-    public Task createTask(@PathVariable String userName,@RequestBody Task task){
+    public Task createTask(@PathVariable("username") String userName,@RequestBody Task task){
         task.setUserName(userName);
         task.setId(null);
         return taskRepository.save(task);
@@ -45,7 +45,7 @@ public class TaskJpaController {
     }
 
     @DeleteMapping("users/{username}/tasks/{id}")
-    public ResponseEntity<Void> deleteTodo(@PathVariable String username , @PathVariable int id){
+    public ResponseEntity<Void> deleteTodo(@PathVariable("username") String username , @PathVariable int id){
 //        taskService.deleteTodo(id);
         taskRepository.deleteById(id);
         return ResponseEntity.noContent().build();

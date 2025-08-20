@@ -6,10 +6,10 @@ import './SignUpPage.css';
 
 export default function SignUpPage() {
   const [formData, setFormData] = useState({
-    name: "",
-    username: "",
-    email: "",
-    phone: "",
+    fullName: "",
+    userName: "",
+    emailAddress: "",
+    contactNumber: 0,
     password: "",
     confirmPassword: ""
   });
@@ -43,33 +43,33 @@ export default function SignUpPage() {
     const newErrors = {};
 
     // Name validation
-    if (!formData.name.trim()) {
-      newErrors.name = "Name is required";
-    } else if (formData.name.trim().length < 2) {
-      newErrors.name = "Name must be at least 2 characters";
+    if (!formData.fullName.trim()) {
+      newErrors.fullName = "Full Name is required";
+    } else if (formData.fullName.trim().length < 2) {
+      newErrors.fullName = "Full Name must be at least 2 characters";
     }
 
     // Username validation
-    if (!formData.username.trim()) {
-      newErrors.username = "Username is required";
-    } else if (formData.username.trim().length < 3) {
-      newErrors.username = "Username must be at least 3 characters";
-    } else if (!/^[a-zA-Z0-9_]+$/.test(formData.username)) {
-      newErrors.username = "Username can only contain letters, numbers, and underscores";
+    if (!formData.userName.trim()) {
+      newErrors.userName = "Username is required";
+    } else if (formData.userName.trim().length < 3) {
+      newErrors.userName = "Username must be at least 3 characters";
+    } else if (!/^[a-zA-Z0-9_]+$/.test(formData.userName)) {
+      newErrors.userName = "Username can only contain letters, numbers, and underscores";
     }
 
     // Email validation
-    if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = "Please enter a valid email address";
+    if (!formData.emailAddress.trim()) {
+      newErrors.emailAddress = "Email is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.emailAddress)) {
+      newErrors.emailAddress = "Please enter a valid email address";
     }
 
     // Phone validation
-    if (!formData.phone.trim()) {
-      newErrors.phone = "Phone number is required";
-    } else if (!/^\+?[\d\s-()]+$/.test(formData.phone)) {
-      newErrors.phone = "Please enter a valid phone number";
+    if (!formData.contactNumber.trim()) {
+      newErrors.contactNumber = "Phone number is required";
+    } else if (!/^\+?[\d\s-()]+$/.test(formData.contactNumber)) {
+      newErrors.contactNumber = "Please enter a valid phone number";
     }
 
     // Password validation
@@ -107,16 +107,16 @@ export default function SignUpPage() {
       // Here you would typically make an API call to register the user
       // For now, we'll simulate a successful registration
       const user = {
-        name: formData.name,
-        username: formData.username,
-        email: formData.email,
-        phone: formData.phone,
+        fullName: formData.fullName,
+        userName: formData.userName,
+        emailAddress: formData.emailAddress,
+        contactNumber: formData.contactNumber,
         password: formData.password
       };
       console.log('User registration data:', user);
 
       // Call the API to register the user
-      await AddUserApi(formData.username, user);
+      await AddUserApi(user);
 
       // Navigate to login page after successful registration
       navigate('/login');
@@ -157,66 +157,66 @@ export default function SignUpPage() {
         <form className="form" onSubmit={handleSubmit}>
           {/* Name Field */}
           <div className="form-group">
-            <label htmlFor="name">Full Name</label>
+            <label htmlFor="fullName">Full Name</label>
             <input
-              id="name"
-              name="name"
+              id="fullName"
+              name="fullName"
               type="text"
               placeholder="Enter your full name"
-              value={formData.name}
+              value={formData.fullName}
               onChange={handleChange}
-              className={errors.name ? 'error' : ''}
+              className={errors.fullName ? 'error' : ''}
               required
             />
-            {errors.name && <span className="field-error">{errors.name}</span>}
+            {errors.fullName && <span className="field-error">{errors.fullName}</span>}
           </div>
 
           {/* Username Field */}
           <div className="form-group">
-            <label htmlFor="username">Username</label>
+            <label htmlFor="userName">Username</label>
             <input
-              id="username"
-              name="username"
+              id="userName"
+              name="userName"
               type="text"
               placeholder="Choose a username"
-              value={formData.username}
+              value={formData.userName}
               onChange={handleChange}
-              className={errors.username ? 'error' : ''}
+              className={errors.userName ? 'error' : ''}
               required
             />
-            {errors.username && <span className="field-error">{errors.username}</span>}
+            {errors.userName && <span className="field-error">{errors.userName}</span>}
           </div>
 
           {/* Email Field */}
           <div className="form-group">
-            <label htmlFor="email">Email Address</label>
+            <label htmlFor="emailAddress">Email Address</label>
             <input
-              id="email"
-              name="email"
+              id="emailAddress"
+              name="emailAddress"
               type="email"
               placeholder="Enter your email"
-              value={formData.email}
+              value={formData.emailAddress}
               onChange={handleChange}
-              className={errors.email ? 'error' : ''}
+              className={errors.emailAddress ? 'error' : ''}
               required
             />
-            {errors.email && <span className="field-error">{errors.email}</span>}
+            {errors.emailAddress && <span className="field-error">{errors.emailAddress}</span>}
           </div>
 
           {/* Phone Field */}
           <div className="form-group">
-            <label htmlFor="phone">Phone Number</label>
+            <label htmlFor="contactNumber">Phone Number</label>
             <input
-              id="phone"
-              name="phone"
+              id="contactNumber"
+              name="contactNumber"
               type="tel"
               placeholder="Enter your phone number"
-              value={formData.phone}
+              value={formData.contactNumber}
               onChange={handleChange}
-              className={errors.phone ? 'error' : ''}
+              className={errors.contactNumber ? 'error' : ''}
               required
             />
-            {errors.phone && <span className="field-error">{errors.phone}</span>}
+            {errors.contactNumber && <span className="field-error">{errors.contactNumber}</span>}
           </div>
 
           {/* Password Field */}

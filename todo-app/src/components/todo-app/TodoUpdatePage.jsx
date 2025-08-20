@@ -20,6 +20,7 @@ function TodoUpdateComponent(){
         retrieveTodoApi(username,id).then(response=>{
             setdescription(response.data.description);
             setTargetDate(response.data.targetDate);
+            setIsDone(response.data.done);
             }) 
         .catch(error=>console.log(error))
     }
@@ -27,7 +28,7 @@ function TodoUpdateComponent(){
         e.preventDefault();
         const newTodo={
             id: parseInt(id), 
-            username:username,
+            userName:username,
             description:description,
             targetDate:targetDate,
             done:isDone
