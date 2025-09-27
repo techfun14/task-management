@@ -13,7 +13,7 @@ function TodoAddUpdateComponent(){
     const username=authContext.usrname;
     
 
-    function handleSubmit(e){
+    async function handleSubmit(e){
         e.preventDefault(); // Prevent page reload
         const newTodo = {
         username:username,
@@ -21,13 +21,16 @@ function TodoAddUpdateComponent(){
         targetDate: targetDate,
         done: false
         };
-        addTodoApi(username,newTodo).then(
-            response => {
-                console.log("Todo added:", response.data);
-            })
-            .catch(error => {
-    console.error("Failed to add todo:", error);
-  });
+        try{ 
+            const response=await addTodoApi(username,newTodo,authContext.token);
+            console.log(response.data);
+            navigate('/list-todos'); // Redirect to the list of todos after adding
+
+        }
+        catch(error){
+            console.error("Error adding todo:", error);
+        }   
+        
     }
     return(
         <div className="todo-update-container">
@@ -52,7 +55,7 @@ function TodoAddUpdateComponent(){
                      
                     </div>
 
-                    <button type="submit" className="update-button" onClick={()=>navigate('/list-todos')}>Add- Todo</button>
+                    <button type="submit" className="update-button">Add- Todo</button>
                 </form>
                 
             </div>

@@ -11,7 +11,7 @@ const Header = () => {
   return (
     <header className="header shadow">
       <div className="nav-left">
-        <h1 className="logo">Task Manager</h1>
+        <h1 className="logo">Task Manager By Utkarsh Jain</h1>
       </div>
 
       <nav className="nav-center">

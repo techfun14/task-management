@@ -2,7 +2,7 @@ import './App.css';
 import Header from './components/todo-app/Header';
 import TodoApp from './components/todo-app/TodoApp';
 import { useState } from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import AuthProvider from './components/todo-app/security/Authcontext';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -21,10 +21,10 @@ function App() {
   return (
     <div className="App">
       <AuthProvider>
-        <BrowserRouter>
+        <HashRouter >
           <Header isLoggedIn={isLoggedIn} username={username} onLogout={handleLogout} />
           <TodoApp onLogin={handleLogin} onLogout={handleLogout} />
-        </BrowserRouter>
+        </HashRouter>
       </AuthProvider>
     </div>
   );

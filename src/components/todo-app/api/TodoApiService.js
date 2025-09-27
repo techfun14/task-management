@@ -1,14 +1,37 @@
-import axios from "axios";
-const apiClient=axios.create({baseURL:'http://localhost:9090'});
+
+import { apiClient } from "./apiClient";
 
 // Response to preflight 
 // request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource.
-export const retrieveAllTodosForUsername=(username)=>apiClient.get(`/users/${username}/todos`,{
+export const retrieveAllTodosForUsername=(username,token)=>apiClient.get(`/users/${username}/tasks`,{
     headers:{
-        Authorization:'Basic dXRrYXJzaDoxMjM0'
+        Authorization:token
     }
 })
-export const deleteTodoForId=(username,id)=>apiClient.delete(`users/${username}/todos/${id}`)
-export const retrieveTodoApi=(username,id)=>apiClient.get(`users/${username}/todos/${id}`);
-export const addTodoApi=(username,todo)=>apiClient.post(`users/${username}/todos`,todo);
-export const updateTodoApi=(username,id,todo)=>apiClient.put(`users/${username}/todos/${id}`,todo)
+export const deleteTodoForId=(username,id,token)=>apiClient.delete(`users/${username}/tasks/${id}`,{
+    headers:{
+        Authorization:token
+    }
+})
+export const retrieveTodoApi=(username,id,token)=>apiClient.get(`users/${username}/tasks/${id}`,{
+    headers:{
+        Authorization:token
+    }
+});
+export const addTodoApi=(username,todo,token)=>apiClient.post(`users/${username}/tasks`,todo,{
+    headers:{
+        Authorization:token
+    }
+});
+export const updateTodoApi=(username,id,todo,token)=>apiClient.put(`users/${username}/tasks/${id}`,todo,{
+    headers:{
+        Authorization:token
+    }
+});
+
+export const executeBasicAuthenticationService =(token)=>
+     apiClient.get('/basicauth',{
+        headers:{
+            Authorization:token
+        }
+    });
